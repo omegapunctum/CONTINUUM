@@ -1,15 +1,17 @@
-# Состояние разработки
+# Development status
 
-## CONT-001 · Первый работающий маршрут
+## Implemented
 
-В этой ветке можно открыть приветственный экран и перейти на `/atlas`. Один вымышленный пример проверяет, как событие и период располагаются на одной линейной оси. Пользователь выбирает элемент мышью или клавиатурой. Годы на линейке проходят через границу эр и отображаются в исторической записи.
+CONT-001 introduced the welcome screen, the atlas route, a linear year coordinate across the BCE/CE boundary, and automated checks.
 
-Воспроизводимая проверка на Node.js 22.16.0: `npm ci`, затем `npm run check`. Локально прошли TypeScript, ESLint, три исходных теста домена и сборка Vite. В Chromium проверены прямой вход и перезагрузка `/atlas`, переход с главной и обратно, выбор события и периода, отсутствие горизонтального переполнения страницы при ширине 320, 390 и 1200 пикселей.
+CONT-002 gives the timeline a shared dating model. A solid bar represents a period of work. Hatching represents the possible date range of one event. Discrete candidate years have separate markers. An approximate event keeps a single year anchor, and each boundary of a period can independently be marked approximate. Selecting a mark exposes its date in text.
 
-## Следующая задача — CONT-002 · Точность датировки
+The demonstration uses synthetic fixtures. Domain tests cover matching numeric bounds with different meanings, approximate dates, invalid inputs, and historical year formatting. Run `npm ci` and `npm run check` on Node.js 22.16.0 to reproduce the repository checks.
 
-Описать точный год, приблизительный год, окно возможных дат события и период с отдельной точностью каждой границы. Перевести оба демонстрационных элемента на единый тип датировки в `src/domain`.
+## Next task — CONT-003: A compact timeline inside an object card
 
-Критерий готовности: по одной и той же числовой паре можно показать либо вероятное время события, либо длительность работ. Подпись и графика сохраняют это различие. Для «около» не создаются искусственные границы. Новые случаи покрываются тестами, включая переход между эрами.
+Use one synthetic building with a construction phase and a separately dated event. Render both using the same dating types as the atlas. Keep the card's selection and viewport independent from the global timeline.
 
-Собственная шкала здания и загрузка проверенного архитектурного набора из Airtable зависят от этого контракта. Вопрос для проверки на реальных данных — как хранить два альтернативных года начала с привязкой каждого к источнику.
+Acceptance: opening the card, selecting a phase, and returning to the atlas preserves the global selection and date range. The phase and event remain individually selectable with a keyboard and at mobile widths.
+
+Source attribution for competing dates, open-ended construction periods, and publication of a reviewed Airtable dataset remain open before importing real records.
