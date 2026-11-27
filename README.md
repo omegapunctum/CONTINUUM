@@ -19,6 +19,10 @@ Select a mark with a pointer, or use Tab and Enter. The details below the timeli
 
 ![Architecture timeline with a construction interval, event window, alternative years and single-year events](docs/atlas.png)
 
+Select the gallery construction period or arch foundation, then open the building card. The card places both records on one axis. Selecting a mark changes its caption inside the card. Close the card to resume at the original atlas selection.
+
+![Gallery card with its construction period and arch foundation on one axis](docs/object-card.png)
+
 ## Verify a change
 
 Run `npm run check` for type checking, ESLint, domain tests, and a production build. Use `npm run preview` after building to serve the output locally.
