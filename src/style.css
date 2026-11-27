@@ -15,10 +15,18 @@ header{padding:18px 5vw;border-bottom:1px solid var(--rule)}.brand{font-weight:5
 .tracks{position:relative;margin:0 clamp(30px,5vw,60px);padding-top:20px}.guide{position:absolute;inset-block:0 40px;border-left:1px solid #323635}
 .track{position:relative;height:68px}.mark{position:absolute;top:0;height:48px;border:0;padding:0;background:transparent;white-space:nowrap}
 .mark .ink{position:absolute;left:0;right:0;bottom:5px;height:5px;background:#9a968d;border-radius:1px}
-.mark.point{min-width:44px;transform:translateX(-50%)}.mark.point .ink{left:calc(50% - 4px);width:8px;height:8px;transform:rotate(45deg)}
-.mark-label{position:absolute;left:0;bottom:16px;font-size:.9rem}.point .mark-label{left:50%;transform:translateX(-50%)}
+.mark.single{min-width:44px;transform:translateX(-50%)}.mark.event .ink{left:calc(50% - 4px);width:8px;height:8px;transform:rotate(45deg)}
+.mark-label{position:absolute;left:0;bottom:16px;font-size:.9rem}.single .mark-label{left:50%;transform:translateX(-50%)}
 .mark[aria-pressed=true] .ink{background:var(--gold)}.mark[aria-pressed=true] .mark-label{text-decoration:underline;text-underline-offset:4px}
 .ruler{height:42px;border-top:1px solid var(--rule);position:relative}
 .ruler span{position:absolute;top:9px;transform:translateX(-50%);white-space:nowrap;font: .85rem/1.3 ui-monospace,monospace;color:var(--quiet)}
 #selection{margin-top:1.6rem}#selection span{font-size:.88rem;color:var(--gold)}#selection h2{margin:.15rem 0;font-size:1.65rem}#selection p{margin:0}
 @media(max-width:600px){.atlas{margin:2rem auto}.ruler span:nth-child(2),.ruler span:nth-child(4),.ruler span:nth-child(5){display:none}.mark-label{font-size:.85rem}}
+
+.mark.window .ink{height:8px;border:1px dashed currentColor;background:repeating-linear-gradient(125deg,transparent 0 3px,#b5aa9559 3px 4px)}
+.mark .candidate,.mark.circa .ink{position:absolute;width:9px;height:9px;bottom:4px;border:1.5px solid currentColor;background:var(--surface,#111313)}
+.mark .candidate{transform:translateX(-50%) rotate(45deg)}
+.mark.circa .ink{border-radius:50%;left:calc(50% - 4.5px)}
+.mark.single:is(.window,.period) .ink{left:calc(50% - 3px);right:auto;width:6px}
+.mark.period .ink{mask-image:linear-gradient(90deg,var(--start-ink,#000),#000 20% 80%,var(--end-ink,#000))}
+.mark.soft-start{--start-ink:transparent}.mark.soft-end{--end-ink:transparent}
