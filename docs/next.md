@@ -8,10 +8,12 @@ CONT-002 gives the timeline a shared dating model. A solid bar represents a peri
 
 The demonstration uses synthetic fixtures. Domain tests cover matching numeric bounds with different meanings, approximate dates, invalid inputs, and historical year formatting. Run `npm ci` and `npm run check` on Node.js 22.16.0 to reproduce the repository checks.
 
-## Next task — CONT-003: A compact timeline inside an object card
+CONT-003 adds a gallery card with one local axis for two explicitly linked records. Its extent fits their dates. Both views use the same mark renderer and dating model. The card opens at the selected atlas record and keeps subsequent selections local. On desktop it is centered. On small screens it sits at the bottom.
 
-Use one synthetic building with a construction phase and a separately dated event. Render both using the same dating types as the atlas. Keep the card's selection and viewport independent from the global timeline.
+Browser checks against the production build covered 320, 390, and 1200 px, touch and keyboard selection, dismissal, focus restoration, unchanged page scroll and atlas ruler, and reopening from the active atlas mark.
 
-Acceptance: opening the card, selecting a phase, and returning to the atlas preserves the global selection and date range. The phase and event remain individually selectable with a keyboard and at mobile widths.
+## Next task — CONT-004: Pan and zoom the atlas
+
+Give the global atlas a movable year range and smooth zoom anchored to the pointer. Keep the ruler and marks aligned to the same linear coordinate. Verify that a reader can navigate to a non-default range, inspect a building, and return to the same range and selection on desktop and mobile.
 
 Source attribution for competing dates, open-ended construction periods, and publication of a reviewed Airtable dataset remain open before importing real records.

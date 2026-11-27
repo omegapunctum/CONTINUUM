@@ -30,3 +30,48 @@ header{padding:18px 5vw;border-bottom:1px solid var(--rule)}.brand{font-weight:5
 .mark.single:is(.window,.period) .ink{left:calc(50% - 3px);right:auto;width:6px}
 .mark.period .ink{mask-image:linear-gradient(90deg,var(--start-ink,#000),#000 20% 80%,var(--end-ink,#000))}
 .mark.soft-start{--start-ink:transparent}.mark.soft-end{--end-ink:transparent}
+
+.card-opener, .close-card {
+  border: 0;
+  background: transparent;
+  min-height: 44px;
+}
+.card-opener { margin-top: .5rem; padding: 0 .15rem; color: var(--gold); }
+.card-opener span { margin-inline-start: .35rem; }
+html:has(.object-card[open]) { overflow: hidden; }
+.object-card {
+  width: min(30rem, calc(100% - 2rem));
+  max-height: 85dvh;
+  padding: 20px 24px 24px;
+  background: #151716;
+  color: inherit;
+  border: 1px solid #454741;
+  border-radius: 8px;
+  overscroll-behavior: contain;
+  --surface: #151716;
+}
+.object-card::backdrop { background: rgb(0 0 0 / 30%); }
+.card-heading { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.card-heading h2 { margin: 0; font: 400 1.8rem/1.2 Georgia, serif; }
+.close-card { min-width: 44px; color: var(--quiet); font-size: 1.6rem; }
+.object-axis { margin: .65rem 0 1rem; padding-inline: 22px; }
+.object-rail { position: relative; height: 44px; }
+.object-rail::before {
+  content: ''; position: absolute; inset: 50% 0 auto; border-top: 1px solid #5d615c;
+}
+.object-rail .mark { height: 44px; }
+.object-rail .mark .ink, .object-rail .mark .candidate { bottom: auto; top: 50%; translate: 0 -50%; }
+.object-rail .mark[aria-pressed=true] { color: var(--gold); }
+.object-rail .mark[aria-pressed=true] .ink { outline: 1px solid var(--gold); outline-offset: 2px; }
+.object-years { display: flex; justify-content: space-between; margin: -3px -22px 0; color: var(--quiet); font: .8rem/1.3 ui-monospace, monospace; }
+.object-years.single-year { justify-content: center; }
+.object-detail { border-top: 1px solid var(--rule); padding-top: .8rem; }
+.object-detail h3 { font: 400 1.3rem/1.35 Georgia, serif; margin: .15rem 0; }
+.object-detail p { margin: 0; color: var(--quiet); font-size: .9rem; }
+.object-detail p:first-child { color: var(--gold); font-size: .8rem; }
+@media (max-width: 600px) {
+  .object-card { margin: auto 0 0; width: 100%; max-width: none; border-radius: 12px 12px 0 0; padding: 12px 20px max(18px, env(safe-area-inset-bottom)); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .object-card[open] { animation: appear .18s ease-out; }
+}
